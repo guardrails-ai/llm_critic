@@ -1,28 +1,32 @@
 ## Overview
 
 | Developed by | Guardrails AI |
-| --- | --- |
 | Date of development | Feb 15, 2024 |
 | Validator type | Format |
-| Blog | - |
+| Blog |  |
 | License | Apache 2 |
 | Input/Output | Output |
 | Open-source contributor | [Alex Falconer-Athanassakos](https://github.com/alexf-a) |
 
 ## Description
 
+### Intended Use
+
 This validator validates an LLM response by grading the response against a set of provided metrics and criteria. If the evaluation for each criterion is above a certain threshold, the response is considered valid. Otherwise, the response is considered invalid.
 
+### Requirements
 
-## Requirements
-* Dependencies: `litellm`
+* Dependencies:
+    - `litellm`
+    - guardrails-ai>=0.4.0
+
 * API keys: Set your LLM provider API key as an environment variable which will be used by `litellm` to authenticate with the LLM provider.
 For more information on supported LLM providers and how to set up the API key, refer to the [LiteLLM documentation](https://docs.litellm.ai/docs/).
 
 ## Installation
 
 ```bash
-guardrails hub install hub://guardrails/llm_critic
+$ guardrails hub install hub://guardrails/llm_critic
 ```
 
 ## Usage Examples
@@ -87,7 +91,7 @@ Output:
 Validation failed for field with errors: The response failed the following metrics: ['informative', 'engaging'].
 ```
 
-## API Reference
+# API Reference
 
 **`__init__(self, metrics={}, max_score=5, llm_callable="gpt-3.5-turbo", on_fail="noop")`**
 <ul>
@@ -107,7 +111,7 @@ Initializes a new instance of the Validator class.
 
 <br>
 
-**`__call__(self, value, metadata={}) → ValidationResult`**
+**`__call__(self, value, metadata={}) -> ValidationResult`**
 
 <ul>
 
